@@ -99,8 +99,8 @@ canvas.addEventListener('mousemove', function (e) {
 
 canvas.addEventListener('touchmove', function (e) {
     pmouse = { ...mouse }
-    mouse.x = e.x;
-    mouse.y = e.y;
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
 })
  
 canvas.addEventListener('mousedown', function () {
@@ -116,7 +116,7 @@ canvas.addEventListener('mouseup', function () {
 })
 
 canvas.addEventListener('touchend', function () {
-    mousePressed = true;
+    mousePressed = false;
 })
 
 const generateParticles = () => {
