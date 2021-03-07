@@ -96,13 +96,27 @@ canvas.addEventListener('mousemove', function (e) {
     mouse.x = e.x;
     mouse.y = e.y;
 })
+
+canvas.addEventListener('touchmove', function (e) {
+    pmouse = { ...mouse }
+    mouse.x = e.x;
+    mouse.y = e.y;
+})
  
 canvas.addEventListener('mousedown', function () {
     mousePressed = true;
 })
 
+canvas.addEventListener('touchstart', function () {
+    mousePressed = true;
+})
+
 canvas.addEventListener('mouseup', function () { 
     mousePressed = false;
+})
+
+canvas.addEventListener('touchend', function () {
+    mousePressed = true;
 })
 
 const generateParticles = () => {
@@ -131,8 +145,6 @@ const renderParticles = () => {
 const animate = () => {
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '000';
-    ctx.arc(mouse.x, mouse.y, brushConfig.size, 0, Math.PI * 2);
     generateParticles();
     renderParticles();
     requestAnimationFrame(animate);
