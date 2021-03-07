@@ -174,8 +174,11 @@ background: linear-gradient(128deg, rgba(255,0,215,1) 0%, rgba(233,0,16,1) 100%)
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #212121;
   cursor: pointer;
 }
