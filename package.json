@@ -6,13 +6,13 @@
   "license": "",
   "author": "Do Park",
   "scripts": {
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d ./src",
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://doparkeq.github.io/water-brush",
+  "homepage": "https://doparkeq.github.io/water-brush/index.html",
   "devDependencies": {
     "eslint": "^7.21.0",
     "parcel-bundler": "^1.12.4"
