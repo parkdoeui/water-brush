@@ -1,6 +1,10 @@
 body{
   margin: 0;
   font-family: 'Oxygen', 'Ariel', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
 }
 #canvas {
   width: auto;
