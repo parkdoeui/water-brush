@@ -64,7 +64,7 @@ for (const s of document.querySelectorAll(".slider")) {
     s.addEventListener("change", function (e) {
         brushConfig[e.target.id] = e.target.value;
         if (e.target.id === 'scatter') {
-            spawnRange = brushConfig.size * brushConfig.scatter;
+            spawnRange = brushConfig.size * brushConfig.scatter * 0.7;
         }
     });
 }
