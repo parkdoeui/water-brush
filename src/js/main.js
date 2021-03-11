@@ -130,7 +130,7 @@ canvas.addEventListener('touchend', function () {
 
 const generateParticles = () => {
     if (mousePressed) {
-        const densityCap = map(brushConfig.size, 20, 80, 2, 8)
+        const densityCap = map(brushConfig.size, 20, 80, 8, 1)
 
         for (let i = 0; i < Math.min(parseInt(densityCap), brushConfig.density); i++) {
             particles.push(new Particle(mouse, pmouse))
