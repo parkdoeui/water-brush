@@ -1,3 +1,6 @@
+import { add, limit, setMag, sub, decay, getRandom, map } from './utils';
+import './controls';
+
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -14,7 +17,7 @@ const palette = {
     green: {
         id: 'green',
         range: 45,
-        startPoint:65,
+        startPoint: 65,
     },
     blue: {
         id: 'blue',
@@ -25,7 +28,7 @@ const palette = {
         id: 'rainbow',
         range: 360,
         startPoint: 0,
-    }, 
+    },
 }
 
 let brushConfig = {
@@ -93,8 +96,8 @@ window.addEventListener('resize', function () {
 
 canvas.addEventListener('mousemove', function (e) {
     pmouse = { ...mouse }
-    mouse.x = e.x;
-    mouse.y = e.y;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
 })
 
 canvas.addEventListener('touchmove', function (e) {
@@ -103,29 +106,29 @@ canvas.addEventListener('touchmove', function (e) {
     mouse.y = e.touches[0].clientY;
     if (e.target == canvas) {
         e.preventDefault();
-      }
+    }
 })
- 
+
 canvas.addEventListener('mousedown', function () {
     mousePressed = true;
 })
 
-canvas.addEventListener('touchstart', function () {
+canvas.addEventListener('touchstart', function (e) {
     mousePressed = true;
     if (e.target == canvas) {
         e.preventDefault();
-      }
+    }
 })
 
-canvas.addEventListener('mouseup', function () { 
+canvas.addEventListener('mouseup', function () {
     mousePressed = false;
 })
 
-canvas.addEventListener('touchend', function () {
+canvas.addEventListener('touchend', function (e) {
     mousePressed = false;
     if (e.target == canvas) {
         e.preventDefault();
-      }
+    }
 })
 
 const generateParticles = () => {
@@ -166,17 +169,17 @@ class Particle {
             x: getRandom(pm.x - spawnRange, pm.x + spawnRange),
             y: getRandom(pm.y - spawnRange, pm.y + spawnRange),
         }
-        
-        this.targetPosition = { 
+
+        this.targetPosition = {
             x: getRandom(m.x - spawnRange, m.x + spawnRange),
             y: getRandom(m.y - spawnRange, m.y + spawnRange),
         }
         this.velocity = {
             x: 0.0,
             y: 0.0,
-        
+
         }
-        this.col = 'hsla('+ ( Math.sin(colorCounter%Math.PI) * brushConfig.color.range + brushConfig.color.startPoint) +',70%, 35%, 0.3)';
+        this.col = 'hsla(' + (Math.sin(colorCounter % Math.PI) * brushConfig.color.range + brushConfig.color.startPoint) + ',70%, 35%, 1.0)';
         this.topSpeed = 1;
         this.size = Math.random() * brushConfig.size + 15;
         this.f = 0;
